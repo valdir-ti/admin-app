@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-const nextAuthOptions: NextAuthOptions = {
+export const nextAuthOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: 'credentials',
@@ -11,7 +11,7 @@ const nextAuthOptions: NextAuthOptions = {
             },
 
             async authorize(credentials, req) {
-                const response = await fetch('http://localhost:5002/api/login', {
+                const response = await fetch(process.env.NEXTAUTH_URL + '/api/login', {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
@@ -49,4 +49,4 @@ const nextAuthOptions: NextAuthOptions = {
 
 const handler = NextAuth(nextAuthOptions)
 
-export { handler as GET, handler as POST, nextAuthOptions }
+export { handler as GET, handler as POST }
