@@ -1,6 +1,6 @@
-import { nextAuthOptions } from "@/app/api/auth/[...nextauth]/route"
-import ButtonLogout from "@/app/components/ButtonLogout"
 import { getServerSession } from "next-auth"
+import nextAuthOptions from '../../../config/next-auth.config'
+import ButtonLogout from "@/app/components/ButtonLogout"
 
 export default async function page() {
 
